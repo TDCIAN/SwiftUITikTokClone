@@ -12,7 +12,7 @@ struct MainTabView: View {
     @State private var selectedTab: Int = 0
     
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             FeedView()
                 .tabItem {
                     VStack {
@@ -27,7 +27,7 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            Text("Friends")
+            ExploreView()
                 .tabItem {
                     VStack {
                         Image(systemName: selectedTab == 1 ? "person.2.fill" : "person.2")
@@ -46,7 +46,7 @@ struct MainTabView: View {
                     Image(systemName: "plus")
                 }
             
-            Text("Notifications")
+            NotificationsView()
                 .tabItem {
                     VStack {
                         Image(systemName: selectedTab == 3 ? "heart.fill" : "heart")
@@ -60,7 +60,7 @@ struct MainTabView: View {
                 }
                 .tag(3)
             
-            Text("Profile")
+            CurrentUserProfileView()
                 .tabItem {
                     VStack {
                         Image(systemName: selectedTab == 4 ? "person.fill" : "person")
